@@ -96,19 +96,6 @@ export const ImageUpload = ({ onAnalysisComplete }: ImageUploadProps) => {
     setErrorMsg("");
 
     try {
-      const supabase = getSupabaseClient();
-      if (!supabase) {
-        setStatus("error");
-        setErrorMsg(
-          lang === "uz"
-            ? "Server konfiguratsiyasi noto‘g‘ri. Iltimos, keyinroq qayta urinib ko‘ring."
-            : lang === "ru"
-              ? "Неверная конфигурация сервера. Пожалуйста, попробуйте позже."
-              : "Server configuration error. Please try again later."
-        );
-        return;
-      }
-
       // Supabase Edge Functions often fail/time out with large base64 payloads.
       // We downscale to keep the request size manageable.
       const originalDataUrl = await fileToDataUrl(file);
@@ -119,6 +106,8 @@ export const ImageUpload = ({ onAnalysisComplete }: ImageUploadProps) => {
       });
 
       setPreview(preparedDataUrl);
+
+      const supabase = getSupabaseClient();
 
       const { data, error } = await withTimeout(
         supabase.functions.invoke("analyze-brain", {

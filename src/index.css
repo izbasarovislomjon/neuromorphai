@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    --primary: 213 72% 37%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 15%;
+
+    --muted: 210 30% 95%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 213 72% 37%;
+
+    --radius: 0.75rem;
+
+    /* Custom medical tokens */
+    --medical-blue: 213 72% 37%;
+    --medical-cyan: 199 89% 48%;
+    --medical-deep: 215 50% 12%;
+    --medical-light: 210 60% 97%;
+    --medical-glow: 199 100% 60%;
+
+    --gradient-medical: linear-gradient(135deg, hsl(213 72% 37%), hsl(199 89% 48%));
+    --gradient-hero: linear-gradient(180deg, hsl(215 50% 12%) 0%, hsl(213 72% 25%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(210 60% 97%) 100%);
+
+    --shadow-card: 0 1px 3px hsl(215 25% 15% / 0.04), 0 4px 12px hsl(215 25% 15% / 0.06);
+    --shadow-card-hover: 0 4px 16px hsl(213 72% 37% / 0.1), 0 8px 32px hsl(213 72% 37% / 0.06);
+    --shadow-glow: 0 0 20px hsl(199 89% 48% / 0.15);
+
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 50% 8%;
+    --foreground: 210 40% 95%;
+    --card: 215 45% 12%;
+    --card-foreground: 210 40% 95%;
+    --popover: 215 45% 12%;
+    --popover-foreground: 210 40% 95%;
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 40% 18%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 215 35% 20%;
+    --muted-foreground: 215 20% 60%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 215 30% 22%;
+    --input: 215 30% 22%;
+    --ring: 199 89% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .medical-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-medical);
+  }
+
+  .medical-card {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    @apply rounded-xl border border-border/50 transition-all duration-300;
+  }
+
+  .medical-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .font-mono-data {
+    font-family: var(--font-mono);
+  }
+
+  .metric-badge {
+    @apply rounded-lg border border-border/50 p-4 text-center transition-all duration-300;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .metric-badge:hover {
+    box-shadow: var(--shadow-card-hover);
+    @apply -translate-y-0.5;
+  }
+}

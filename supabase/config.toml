@@ -1,0 +1,4 @@
+project_id = "jkhxuzsvzthhacpabend"
+
+[functions.analyze-brain]
+verify_jwt = false
